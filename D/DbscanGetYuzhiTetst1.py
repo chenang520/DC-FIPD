@@ -13,12 +13,9 @@ def dataProcessing(data):
 def getYuzhi(data):
     lowDataNum = 0
     bigDataNum = 0
-    # 统计每两个整数之间的数据
     result = {}
-    # 提取第二个数据的值
     second_data = [item[2] for item in data]
 
-    # 根据第二个数据的值将两条数据分成两个数据集
     data_0 = [item for item in data if item[2] == 0]
     data_1 = [item for item in data if item[2] == 1]
 
@@ -26,11 +23,9 @@ def getYuzhi(data):
     sorted_data1 = dataProcessing(data_1)  #风险IP
 
     for threshold_value in np.arange(0.1, 1.1, 0.05):
-        # 计算要寻找的阈值的索引位置
         threshold_index0 = int(np.floor(threshold_value * len(sorted_data0))) - 1
         threshold_index1 = int(np.floor((1-threshold_value) * len(sorted_data1))) - 1
 
-        # 获取阈值
         threshold0 = sorted_data0[threshold_index0]
         threshold1 = sorted_data1[threshold_index1]
         if threshold0 < threshold1:
@@ -79,7 +74,6 @@ def getYuzhi(data):
 
     
 if __name__ == '__main__':
-    # 建立数据库连接
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='123',
@@ -92,7 +86,6 @@ if __name__ == '__main__':
                 str1 = "eps="
                 str2 = "_min="
                 column_name = str1 + str(eps) + str2 + str(min_sample)
-                # 执行查询语句
                 sql = "SELECT ip,`{}` ,risk FROM dbscan_ip_riskvalue_traindata".format(column_name)
                 cursor.execute(sql)
                 data = cursor.fetchall()
@@ -104,7 +97,6 @@ if __name__ == '__main__':
                             AND TABLE_NAME = 'dbscan_ip_riskvalue_traindata' AND column_name = %s
                 """
                 cursor.execute(sql1, (column_name,))
-                # 获取查询结果
                 result = cursor.fetchall()
                 parameter = result[0][0]
                 weight = result[0][1]
@@ -112,6 +104,5 @@ if __name__ == '__main__':
                 sql2 = "INSERT INTO dbscan_parameter_weight_threshold (parameter,weight,threshold) VALUES (%s,%s,%s)"
                 cursor.execute(sql2, (parameter, weight, threshold))
                 db.commit()
-    # 关闭数据库连接
     cursor.close()
     db.close()
