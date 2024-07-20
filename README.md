@@ -12,7 +12,9 @@ To use the DC-FIPD method, follow these steps:
 
 Clone the repository to your local machine.  
 复制  
-git clone https://github.com/chenang520/DC-FIPD.git  
+```python
+git clone https://github.com/chenang520/DC-FIPD.git
+```
 Navigate to the D folder and review the provided code files.  
 Prepare your training data by placing it in the appropriate format and saving it as train.csv.  
 Execute the training code using the train.csv file to train the DC-FIPD model.  
