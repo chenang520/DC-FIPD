@@ -48,17 +48,7 @@ def haversine(lon1, lat1, lon2, lat2):
 
 
 def DBSCAN_Conbine(IPs, eps=1.0, min_samples=10):
-    """
-    使用DBSCAN算法对数据进行聚类并展示
-    步骤：
-        1.聚类
-        2.将所有点放到地图上
-        3.计算每个簇的中心点和到最远的点的距离（通过haversine算法计算距离）
-        4.根据中心点和最远距离画圆圈并放到地图里面
-    """
-    # 1.聚类
-    # 从文件读取数据
-
+   
     data = pd.read_csv('TrainData.csv')
     longitude = data.iloc[:, 1]
     latitude = data.iloc[:, 2]
@@ -236,19 +226,7 @@ if __name__ == '__main__':
                 # print("代码运行时间：", run_time, "秒")
                 # start_time = time.time()
     print("程序已结束")
-    # sql2 = "UPDATE testdata SET cluster = '%s' WHERE ip = '%s'" % (cluster, ip)
-    # try:
-    #         # 执行SQL语句
-    #     cursor.execute(sql2)
-    #         # 提交到数据库执行
-    #     db.commit()
-    # except Exception as e:
-    #     print(e)
-    #         # 发生错误时回滚
-    #     db.rollback()
-    #
-    # db.commit()
-    # db.close()
+   
 
 
 
