@@ -77,40 +77,7 @@ def getYuzhi(data):
 
             return threshold
 
-    # # 计算数据的直方图
-    # values, bins = np.histogram(data, bins=np.arange(0, np.max(data) + 1, 1))
-    #
-    # # 生成区间的字符串表示形式
-    # keys = [f"{int(bins[i])}-{int(bins[i+1])}" for i in range(len(bins) - 1)]
-    #
-    # print(keys)
-    # print(values)
-    # # 绘制柱状图
-    # plt.bar(keys, values)
-    # plt.xlabel('riskValue')
-    # plt.ylabel('number')
-    # # plt.title('riskIP')
-    # if risk == 1:
-    #     plt.title('riskIP')
-    #     print("风险IP中小于阈值{}的数量为：{}".format(yuzhi, lowDataNum))
-    #     print("风险IP中大于阈值{}的数量为：{}".format(yuzhi, bigDataNum))
-    #     print("风险IP识别正确率：{}，错误率{}".format(bigDataNum/(lowDataNum+bigDataNum), lowDataNum/(lowDataNum+bigDataNum)))
-    # else:
-    #     plt.title('normalIP')
-    #     print("正常IP中小于阈值{}的数量为：{}".format(yuzhi, lowDataNum))
-    #     print("正常IP中大于阈值{}的数量为：{}".format(yuzhi, bigDataNum))
-    #     print("正常IP识别正确率：{}，错误率{}".format(lowDataNum/(lowDataNum+bigDataNum), bigDataNum/(lowDataNum+bigDataNum)))
-    #
-    # # x_ticks = [0, 50, 100, 200]  # x轴上的刻度值
-    # # x_tick_labels = ['0', '100', '200', '300']  # x轴上的刻度标签
-    # x_ticks = [0, 5, 10, 20, 30, 40, 50, 60]  # x轴上的刻度值
-    # plt.xticks(x_ticks, x_ticks, rotation=45)
-    # # 添加平行于x轴的线
-    # plt.axvline(x=yuzhi, color='r', linestyle='--')
-    # plt.axvline(x=80, color='r', linestyle='--')
-    # plt.axvline(x=120, color='r', linestyle='--')
-    # plt.show()
-
+    
 if __name__ == '__main__':
     # 建立数据库连接
     db = pymysql.connect(host='localhost',
