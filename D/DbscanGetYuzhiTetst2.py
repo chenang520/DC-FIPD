@@ -32,7 +32,6 @@ def getACC(data, threshold):
 
     accuracy = (TP + TN) / i
 
-    # 计算 Precision, Recall 和 F1
     precision = TP / (TP + FP)
     recall = TP / (TP + FN)
     f1 = 2 * (precision * recall) / (precision + recall)
@@ -40,7 +39,6 @@ def getACC(data, threshold):
     return accuracy, precision, recall, f1
 
 if __name__ == '__main__':
-    # 建立数据库连接
     db = pymysql.connect(host='localhost',
                          user='root',
                          password='123',
@@ -53,7 +51,6 @@ if __name__ == '__main__':
                 str1 = "eps="
                 str2 = "_min="
                 column_name = str1 + str(eps) + str2 + str(min_sample)
-                # 执行查询语句
                 sql = "SELECT ip,`{}` ,risk FROM dbscan_ip_riskvalue_testdata".format(column_name)
                 cursor.execute(sql)
                 data = cursor.fetchall()
@@ -67,6 +64,5 @@ if __name__ == '__main__':
                 cursor.execute(sql2, (column_name, threshold, acc, f1, precision1, recall))
                 db.commit()
                 pbar.update(1)
-    # 关闭数据库连接
     cursor.close()
     db.close()
