@@ -50,24 +50,22 @@ with tqdm(total=54) as pbar:
                 ASN = float(result[1])
                 HOP = float(result[2])
                 cluter = int(result[3])
-                # 更新最小值
+              
                 if ASN < ASN_min_value:
                     ASN_min_value = ASN
-                # 更新最大值
+               
                 if ASN > ASN_max_value:
                     ASN_max_value = ASN
-
-                # 更新最小值
+                
                 if HOP < Hop_min_value:
                     Hop_min_value = HOP
-                # 更新最大值
+               
                 if HOP > Hop_max_value:
                     Hop_max_value = HOP
-
-                # 更新最小值
+               
                 if cluter < cluster_min_value:
                     cluster_min_value = cluter
-                # 更新最大值
+                
                 if cluter > cluster_max_value:
                     cluster_max_value = cluter
             best_weights1 = str(best_weights[0])+"_"+str(best_weights[1])+"_"+str(best_weights[2])
