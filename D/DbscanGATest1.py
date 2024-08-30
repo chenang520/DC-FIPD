@@ -97,7 +97,7 @@ with tqdm(total=56) as pbar:
             scaler = MinMaxScaler()
             X = scaler.fit_transform(X)
             population_size = 50 
-            mutation_rate = 0.1  
+            mutation_rate = 0.01  
             num_generations = 20  
             best_weights = Ga(X, y)
             while best_weights[0] < 0 or best_weights[1] < 0 or best_weights[2] < 0 or best_weights[2] < best_weights[
